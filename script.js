@@ -14,15 +14,22 @@ const bands = [
   'An Old Dog'
 ];
 
-// Function to remove 'a', 'an', 'the' from start for sorting
 function strip(bandName) {
+  // remove 'a ', 'an ', 'the ' from beginning, case insensitive
   return bandName.replace(/^(a |an |the )/i, '').trim();
 }
 
-// Sort the bands alphabetically ignoring 'a', 'an', 'the'
-const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+const sortedBands = bands.sort((a, b) => {
+  if (strip(a) > strip(b)) return 1;
+  else if (strip(a) < strip(b)) return -1;
+  else return 0;
+});
 
-// Display them in the unordered list
-const bandList = document.getElementById('band');
-bandList.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+const ul = document.getElementById('band');
+
+// populate after DOM is ready
+window.addEventListener('DOMContentLoaded', () => {
+  ul.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+});
+
 
