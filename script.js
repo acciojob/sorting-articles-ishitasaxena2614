@@ -25,11 +25,10 @@ const sortedBands = bands.sort((a, b) => {
   else return 0;
 });
 
-const ul = document.getElementById('band');
-
-// populate after DOM is ready
 window.addEventListener('DOMContentLoaded', () => {
+  const ul = document.getElementById('band');
   ul.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
 });
+
 
 
