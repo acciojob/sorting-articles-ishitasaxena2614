@@ -20,8 +20,9 @@ function strip(bandName) {
 
 const sortedBands = bands.sort((a, b) => strip(a).localeCompare(strip(b)));
 
-const ul = document.getElementById('band');
+const ul = document.getElementById('bands');
 ul.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+
 
 
 
