@@ -15,20 +15,14 @@ const bands = [
 ];
 
 function strip(bandName) {
-  // remove 'a ', 'an ', 'the ' from beginning, case insensitive
   return bandName.replace(/^(a |an |the )/i, '').trim();
 }
 
-const sortedBands = bands.sort((a, b) => {
-  if (strip(a) > strip(b)) return 1;
-  else if (strip(a) < strip(b)) return -1;
-  else return 0;
-});
+const sortedBands = bands.sort((a, b) => strip(a).localeCompare(strip(b)));
 
-window.addEventListener('DOMContentLoaded', () => {
-  const ul = document.getElementById('band');
-  ul.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
-});
+const ul = document.getElementById('band');
+ul.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+
 
 
 
